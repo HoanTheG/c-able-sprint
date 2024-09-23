@@ -8,8 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const day = days[now.getDay()];
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const time = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('time').innerText = `${day}, ${time}`;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
 </head>
-<body>
+<body onload="updateTime()" >
     <div class="info-screen">
         <p class="halal">WE PROUDLY SERVE 100% HALAL FOOD IN OUR RESTAURANT</p>
         <header>
@@ -21,7 +35,7 @@
                 <a href="./Danish/danish.html" class="language-btn-dk" id="danish">DANISH</a>
             </div>
             <div class="date">
-                <p>Tuesday, 17:35:56</p>
+                <p id="time">Tuesday, 17:35:56</p>
             </div>
         </nav>
         </header>
